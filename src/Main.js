@@ -2,13 +2,11 @@
  * Created by winjayyu on 2017/12/4.
  */
 import React, { Component } from 'react';
-import { Text, Image, View, ScrollView } from 'react-native';
+import { Text, Image, View, ScrollView, StyleSheet} from 'react-native';
 import api from './Services/WeatherApi'
 import Images from './Images'
 import TodayWeather from './Components/TodayWeather';
 import Forecast from './Components/Forecast';
-import styles from './Styles';
-
 
 export default class App extends Component {
   constructor() {
@@ -21,7 +19,7 @@ export default class App extends Component {
 
   getData() {
     let self = this;
-    api().then(data => {
+    api.getWeaData().then(data => {
       self.setState({status: data, isLoading: false});
     });
 
@@ -33,11 +31,18 @@ export default class App extends Component {
 
   render () {
     return (
-        <View style={styles.mainContainer}>
-            <Image source={Images.weatherBackground} style={styles.backgroundImage} resizeMode='stretch'/>
-            <TodayWeather status={this.state.status} isLoading={this.state.isLoading}/>
-            <Forecast status={this.state.status} isLoading={this.state.isLoading}/>
-        </View>
+      <View style={styles.container}>
+        <ScrollView>
+          <TodayWeather status={this.state.status} isLoading={this.state.isLoading}/>
+          <Forecast status={this.state.status} isLoading={this.state.isLoading}/>
+        </ScrollView>
+      </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  }
+});

@@ -16,7 +16,7 @@ import Main from './src/Main'
 export default class App extends Component<{}> {
   render() {
     return (
-      <View>
+      <View style={{flex: 1}}>
         <Main />
       </View>
     );

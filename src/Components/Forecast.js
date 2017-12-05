@@ -1,17 +1,20 @@
 import React from 'react';
-import {ScrollView, Text, Image, View, TouchableOpacity} from 'react-native'
-import styles from '../Styles'
+import {ScrollView, Text, Image, View, TouchableOpacity, StyleSheet } from 'react-native'
 import Images from '../Images'
+import api from '../Services/WeatherApi'
+import globalStyle from '../Styles'
 
 export default class TodayWeather extends React.Component {
   _forecastList(item, idx){
     return (
-      <View style={styles.cardButton} key={idx}>
-          <Text style={[styles.cardText, styles.marginTop20]}>{item.day}</Text>
-        <Image source={Images.sun} style={styles.cardImg}/>
-        <View style={styles.textView}>
-          <Text style={styles.temperatureText}>{item.high}-{item.low}</Text>
-          <Text style={{color: '#966'}}>°</Text>
+      <View style={styles.card}>
+        <Text>{item.day}</Text>
+        <View style={{height: 60, flexDirection: "row", alignContent: "center", alignItems:"center"}}>
+          <Image style={{width: 50, height: 50}} source={{uri: api.getIcons(item.code1)}}/>
+          <Text> {item.text}</Text>
+        </View>
+        <View >
+          <Text >{item.high}°/{item.low}°</Text>
         </View>
       </View>
     )
@@ -21,12 +24,26 @@ export default class TodayWeather extends React.Component {
     if(this.props.isLoading) {
       return null;
     }
-    console.log(4321);
     let future = this.props.status.weather[0].future;
     return (
-      <View style={styles.card}>
-        {future.slice(1, 5).map(this._forecastList)}
+      <View style={[styles.container, globalStyle.globalPadding]}>
+        {future.slice(0, 5).map(this._forecastList)}
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 3,
+    backgroundColor: "#fff",
+  },
+  card: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee'
+  }
+
+})

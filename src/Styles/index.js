@@ -76,5 +76,12 @@ export default StyleSheet.create({
     bottom: 0,
     right: 0,
     opacity: 0.8,
+  },
+  globalPadding: {
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+  globalTextColor: {
+    color: '#fff'
   }
 })
