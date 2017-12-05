@@ -2,16 +2,20 @@
  * Created by winjayyu on 2017/12/4.
  */
 import { StyleSheet } from 'react-native';
+import Dimensions from 'Dimensions';
+let { width, height } = Dimensions.get('window');
 
 export default StyleSheet.create({
   mainContainer: {
     flex: 1,
+    alignItems: 'stretch',
+    height: height,
   },
   card: {
     flex: 1,
     flexDirection: "row",
-    justifyContent: "space-around",
-    position: 'absolute', left: 0, right: 0, bottom: 0
+    // justifyContent: "space-around",
+    // position: 'absolute', left: 0, right: 0, bottom: 0
   },
   cardButton: {
     backgroundColor: '#604166',
@@ -44,8 +48,8 @@ export default StyleSheet.create({
     marginTop: 20
   },
   textView: {
-    flexDirection:'row',
-    flexWrap: 'nowrap',
+    // flexDirection:'row',
+    // flexWrap: 'nowrap',
     marginTop: 20
   },
   dayText: {
@@ -54,7 +58,7 @@ export default StyleSheet.create({
   },
   todayWea: {
     flex: 1,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   MarginTop0: {
     marginTop: 0
@@ -64,5 +68,13 @@ export default StyleSheet.create({
   },
   marginLeft10: {
     marginLeft: 20
+  },
+  backgroundImage: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    opacity: 0.8,
   }
 })

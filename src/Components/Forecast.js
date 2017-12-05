@@ -1,7 +1,7 @@
 import React from 'react';
 import {ScrollView, Text, Image, View, TouchableOpacity} from 'react-native'
-import styles from '../Containers/Styles/LaunchScreenStyles'
-import { Images } from '../Themes'
+import styles from '../Styles'
+import Images from '../Images'
 
 export default class TodayWeather extends React.Component {
   _forecastList(item, idx){
@@ -11,7 +11,7 @@ export default class TodayWeather extends React.Component {
         <Image source={Images.sun} style={styles.cardImg}/>
         <View style={styles.textView}>
           <Text style={styles.temperatureText}>{item.high}-{item.low}</Text>
-          {/*<Text style={{color: '#fff'}}>°</Text>*/}
+          <Text style={{color: '#966'}}>°</Text>
         </View>
       </View>
     )
@@ -21,6 +21,7 @@ export default class TodayWeather extends React.Component {
     if(this.props.isLoading) {
       return null;
     }
+    console.log(4321);
     let future = this.props.status.weather[0].future;
     return (
       <View style={styles.card}>
