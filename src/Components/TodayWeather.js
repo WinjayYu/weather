@@ -37,7 +37,7 @@ export default class TodayWeather extends React.Component{
     return (
       <View style={[styles.container, globalStyle.globalPadding]} >
         <Text style={globalStyle.globalTextColor}>{cityName}</Text>
-        <Text style={[{fontSize: 80}, globalStyle.globalTextColor]}>{now.temperature}°</Text>
+        <Text style={[{fontSize: 100, fontFamily: "sans-serif-thin"}, globalStyle.globalTextColor]}>{now.temperature}°</Text>
         <Text style={globalStyle.globalTextColor}>{now.text} | {now.air_quality.city.quality} {now.air_quality.city.pm25}</Text>
         <View style={[styles.bottomView, globalStyle.globalPadding]}>
           <View style={styles.bottomSubView}>
@@ -48,7 +48,7 @@ export default class TodayWeather extends React.Component{
             <Text style={styles.bottomText}>相对湿度</Text>
             <Text style={styles.bottomText}>{now.humidity}%</Text>
           </View>
-          <View>
+          <View style={[styles.bottomSubView, {borderRightWidth: 0}]}>
             <Text style={styles.bottomText}>体感温度</Text>
             <Text style={styles.bottomText}>{now.feels_like}°C</Text>
           </View>
@@ -71,13 +71,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 0,
     right: 0,
-    bottom: 30
+    bottom: 20
   },
   bottomSubView: {
-    flex: 0.33,
+    flex: 1,
     borderRightWidth: 1,
-    borderRightColor: '#eee',
-
+    borderRightColor: '#eee'
   },
   bottomText: {
     textAlign: 'center',

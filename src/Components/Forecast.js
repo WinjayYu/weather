@@ -7,7 +7,7 @@ import globalStyle from '../Styles'
 export default class TodayWeather extends React.Component {
   _forecastList(item, idx){
     return (
-      <View style={styles.card}>
+      <View style={styles.card} key={idx}>
         <Text>{item.day}</Text>
         <View style={{height: 60, flexDirection: "row", alignContent: "center", alignItems:"center"}}>
           <Image style={{width: 50, height: 50}} source={{uri: api.getIcons(item.code1)}}/>
@@ -36,7 +36,7 @@ export default class TodayWeather extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 3,
-    backgroundColor: "#fff",
+    backgroundColor: "#fff"
   },
   card: {
     flexDirection: "row",
@@ -46,4 +46,4 @@ const styles = StyleSheet.create({
     borderBottomColor: '#eee'
   }
 
-})
+});
