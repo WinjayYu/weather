@@ -5,6 +5,8 @@
  */
 
 import React, { Component } from 'react';
+import { createStore } from 'redux'
+import { Provider } from 'react-redux';
 import {
   Platform,
   StyleSheet,
@@ -13,7 +15,7 @@ import {
 } from 'react-native';
 import Main from './src/Main'
 
-export default class App extends Component<{}> {
+export default class App extends Component {
   render() {
     return (
       <View style={{flex: 1}}>
