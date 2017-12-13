@@ -1,38 +1,30 @@
 import React from 'react';
 import { ScrollView, Text, Image, View, TouchableOpacity, StyleSheet } from 'react-native'
 import globalStyle from '../Styles'
+import {getCurrentCity} from '../Actions';
 
 export default class TodayWeather extends React.Component{
   constructor() {
     super();
-    this.state = {date: new Date()}
   }
 
   componentDidMount() {
-    this.timerID = setInterval(
-      () => this.tick(),
-      1000
-    );
+    const { dispatch } = this.props;
+    dispatch(getCurrentCity());
   }
 
   componentWillUnmount() {
-    clearInterval(this.timerID);
-  }
 
-  tick() {
-    this.setState({
-      date: new Date()
-    });
   }
 
   render() {
 
-    if (this.props.isLoading) {
+    if (this.props.isFetching) {
       return null;
     }
-
-    let now = this.props.status.weather[0].now;
-    let cityName = this.props.status.weather[0].city_name;
+console.log('this.props', this.props);
+    let now = this.props.data.weather[0].now;
+    let cityName = this.props.data.weather[0].city_name;
 
     return (
       <View style={[styles.container, globalStyle.globalPadding]} >

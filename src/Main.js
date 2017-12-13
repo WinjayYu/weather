@@ -34,16 +34,9 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <ScrollView
-          refreshControl={
-            <RefreshControl
-              refreshing={this.state.isLoading}
-              onRefresh={this.getData.bind(this)}
-            />
-          }
+
         >
-          <TodayWeather status={this.state.status} isLoading={this.state.isLoading}/>
-          <Forecast status={this.state.status} isLoading={this.state.isLoading}/>
-          <Suggestion status={this.state.status} isLoading={this.state.isLoading}/>
+          <TodayWeather />
         </ScrollView>
       </View>
     )

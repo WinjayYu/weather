@@ -13,14 +13,19 @@ import {
   Text,
   View
 } from 'react-native';
-import Main from './src/Main'
+import Main from './src/Main';
+import configureStore from './src/Store/configureStore';
+
+const store = configureStore();
 
 export default class App extends Component {
   render() {
     return (
-      <View style={{flex: 1}}>
-        <Main />
-      </View>
+      <Provider store={store}>
+        <View style={{flex: 1}}>
+          <Main />
+        </View>
+      </Provider>
     );
   }
 }

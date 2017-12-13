@@ -3,6 +3,8 @@
  */
 import {combineReducers} from 'redux';
 
-module.exports = combineReducers({
-  weather: require('./weaher')
-})
+const rootReducer = combineReducers({
+  weather: require('./weather')
+});
+
+export default rootReducer
